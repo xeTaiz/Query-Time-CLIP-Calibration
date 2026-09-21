@@ -682,8 +682,8 @@ def score_embeddings(
     queries: Tensor,
     *,
     reference: Tensor | None = None,
-    lambda_: float = 0.5,
-    alpha: float = 0.5,
+    lambda_: float = 0.3,
+    alpha: float = 0.4,
     ridge: float = 0.001,
     csls_k: int = 1000,
     mode: str = "multiclass",
@@ -806,8 +806,8 @@ def score_queries(
     queries: Tensor | Sequence[str],
     *,
     reference: Tensor | None = None,
-    lambda_: float = 0.5,
-    alpha: float = 0.5,
+    lambda_: float = 0.3,
+    alpha: float = 0.4,
     ridge: float = 0.001,
     csls_k: int = 1000,
     mode: str = "multiclass",
@@ -974,8 +974,8 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--mode", choices=("multiclass", "single_query"), default="multiclass")
     parser.add_argument("--fit", choices=("reference", "query_reference", "query"), default="reference")
-    parser.add_argument("--lambda", dest="lambda_", type=float, default=0.5)
-    parser.add_argument("--alpha", type=float, default=0.5)
+    parser.add_argument("--lambda", dest="lambda_", type=float, default=0.3)
+    parser.add_argument("--alpha", type=float, default=0.4)
     parser.add_argument("--ridge", type=float, default=0.001)
     parser.add_argument("--csls-k", type=int, default=1000)
     parser.add_argument("--opacity-threshold", type=float, default=0.1)
