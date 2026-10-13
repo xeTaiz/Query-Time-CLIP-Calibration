@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Standalone query-time calibration for canonical lifted CLIP feature fields.
 
-The implementation follows the frozen calibration arithmetic: normalized scene-direction
-subtraction, between-prototype covariance whitening, and a half-CSLS offset computed
-independently for each score column.  Scene statistics and CSLS use every finite,
-nonzero feature row, including low-opacity rows; opacity affects only output eligibility.
+The paper default combines normalized scene-direction subtraction and reference-only
+prototype whitening with graph-free soft clustering of eligible rows. Single-query
+scoring remains a separate target-minus-reference margin with half-CSLS. Scene
+statistics and optional direct-score CSLS use every finite, nonzero feature row,
+including low-opacity rows; clustering and output use only eligible rows.
 """
 from __future__ import annotations
 
@@ -45,6 +46,8 @@ MODEL_PRETRAINED = "laion2b_s34b_b88k"
 NORMALIZE_EPS = 1e-12
 EIGENVALUE_FLOOR_RELATIVE = 1e-10
 HALF_CSLS = 0.5
+SOFT_CLUSTER_SOURCE_COMMIT = "6a9e8f3ba57a11d1c5affe248a82df56dbc7f1b8"
+SOFT_CLUSTER_SOURCE_SHA256 = "653f7a85664b48dc5690ffd6050f558befe02e56fdf04668ad2e09df1e6ca7d8"
 _REFERENCE_PATH = Path(__file__).with_name("reference.pt")
 
 
@@ -515,6 +518,138 @@ def _prepare_prototypes(
     return independent[:, 0], None, independent, diagnostics
 
 
+def _check_cluster_finite(value: Tensor, label: str) -> None:
+    if not bool(torch.isfinite(value).all()):
+        raise FloatingPointError(label + " nonfinite")
+
+
+def _cluster_likelihood(features: Tensor, means: Tensor, variance: Tensor) -> Tensor:
+    inverse = variance.reciprocal()
+    output = features @ (means * inverse).T
+    output.mul_(2)
+    output.sub_((features.square() * inverse).sum(1, keepdim=True))
+    output.sub_((means.square() * inverse).sum(1)[None, :])
+    output.mul_(0.5)
+    return output
+
+
+@torch.inference_mode()
+def soft_cluster(features: Tensor, text: Tensor) -> tuple[Tensor, dict[str, Any]]:
+    """Run the pinned, graph-free paper solver without changing input tensors.
+
+    Inputs must be finite float32 matrices on the same device, with matching feature
+    dimensions, at least eight samples, and at least two competing classes. The
+    returned rows are class probabilities on that device. This is the full-matrix
+    solver: score chunking does not change its operation order, and no graph,
+    external teacher logits, CUDA telemetry, or early stopping is used.
+    """
+
+    features = _require_tensor(features, "features")
+    text = _require_tensor(text, "text")
+    if features.ndim != 2 or text.ndim != 2 or not features.shape[1] or text.shape[1] != features.shape[1]:
+        raise ValueError("features and text must be matrices with matching nonzero dimensions")
+    if features.dtype != torch.float32 or text.dtype != torch.float32:
+        raise ValueError("soft_cluster requires float32 features and text")
+    if features.device != text.device:
+        raise ValueError("features and text must be on the same device")
+    count, dimension = features.shape
+    classes = len(text)
+    if count < 8 or classes < 2:
+        raise ValueError("soft_cluster requires >=8 eligible samples and >=2 competing classes; use cluster=False for direct scores or mode='single_query' for N1 margins")
+    _check_cluster_finite(features, "features")
+    _check_cluster_finite(text, "text")
+    teacher = F.softmax(100 * features @ text.T, dim=1)
+    assignment = teacher.clone()
+    top = assignment.topk(8, dim=0).indices
+    means = torch.stack([
+        (features[top[:, class_id]] * assignment[top[:, class_id], class_id, None]).mean(0)
+        for class_id in range(classes)
+    ])
+    if bool((means.norm(dim=1) == 0).any()):
+        raise FloatingPointError("zero initial centroid after exact-zero exclusion")
+    means = means / means.norm(dim=1, keepdim=True)
+    variance = torch.full((dimension,), 1 / dimension, device=features.device)
+    history = []
+    for outer in range(11):
+        old_decision = assignment.argmax(1)
+        old_assignment = assignment.clone()
+        gaussian = _cluster_likelihood(features, means, variance)
+        # Keep all five updates, even without a graph, for pinned arithmetic parity.
+        for inner in range(5):
+            update = gaussian.clone()
+            update -= update.max(1, keepdim=True).values
+            update = torch.exp(update / 50) * teacher
+            assignment = update / update.sum(1, keepdim=True)
+            _check_cluster_finite(assignment, f"assignment {outer}/{inner}")
+        history.append({
+            "outer": outer,
+            "assignment_max_abs_change": float((assignment - old_assignment).abs().max()),
+            "decision_change_fraction": float((assignment.argmax(1) != old_decision).float().mean()),
+            "std_min": float(variance.min()),
+            "std_max": float(variance.max()),
+            "min_class_mass": float(assignment.sum(0).min()),
+        })
+        del old_assignment, gaussian, update
+        if outer == 10:
+            break
+        mass = assignment.sum(0)
+        weighted = assignment.T @ features
+        means = weighted / mass[:, None]
+        _check_cluster_finite(means, "centroids")
+        if bool((means.norm(dim=1) == 0).any()):
+            raise FloatingPointError("zero refined centroid")
+        means = means / means.norm(dim=1, keepdim=True)
+        variance = (
+            features.double().square().sum(0)
+            - 2 * (means.double() * weighted.double()).sum(0)
+            + (mass.double()[:, None] * means.double().square()).sum(0)
+        ) / count
+        variance = variance.float()
+        _check_cluster_finite(variance, "covariance")
+        if bool((variance <= 0).any()):
+            raise FloatingPointError("nonpositive covariance")
+    return assignment, {
+        "source_commit": SOFT_CLUSTER_SOURCE_COMMIT,
+        "source_sha256": SOFT_CLUSTER_SOURCE_SHA256,
+        "graph": False,
+        "teacher": "softmax(100 * features @ text.T)",
+        "parameters": {
+            "teacher_scale": 100,
+            "initial_topk": 8,
+            "beta": 50,
+            "outer_passes": 11,
+            "centroid_covariance_refits": 10,
+            "inner_updates": 5,
+        },
+        "samples": count,
+        "classes": classes,
+        "history": history,
+        "finite": True,
+        "final_entropy": float(-(
+            assignment * torch.log(assignment.clamp_min(torch.finfo(assignment.dtype).tiny))
+        ).sum(1).mean()),
+        "class_probability_mass": assignment.sum(0).cpu().tolist(),
+        "initial_top8_filtered_indices": top.cpu().tolist(),
+    }
+
+
+def _scoring_options(
+    mode: str, raw: bool, cluster: bool, csls: bool | None
+) -> dict[str, Any]:
+    effective_cluster = bool(cluster and mode == "multiclass" and not raw)
+    if effective_cluster and csls is True:
+        raise ValueError("csls=True is incompatible with clustered multiclass scoring; use csls=False or cluster=False")
+    effective_csls = bool(
+        not raw and not effective_cluster and (True if csls is None else csls)
+    )
+    method = (
+        "raw_cosine" if raw else
+        "single_query_margin" if mode == "single_query" else
+        "soft_cluster" if effective_cluster else "direct_scores"
+    )
+    return {"method": method, "cluster": effective_cluster, "csls": effective_csls}
+
+
 def _visual_rows(
     rows: Tensor, direction: Tensor, lambda_: float, center: bool, device: torch.device
 ) -> Tensor:
@@ -690,12 +825,18 @@ def score_embeddings(
     raw: bool = False,
     center: bool = True,
     whiten: bool = True,
-    csls: bool = True,
+    cluster: bool = True,
+    csls: bool | None = None,
     fit: str = "reference",
     device: str | torch.device = "cuda",
     chunk_size: int = 16384,
 ) -> tuple[Tensor, dict[str, Any]]:
-    """Score already-encoded queries against reusable scene statistics."""
+    """Score encoded queries with paper clustering, N1 margins, or direct controls.
+
+    ``cluster`` only affects multiclass scoring. CSLS defaults to off for clustering
+    and on for N1/direct scores; requesting it with clustering is an error. ``raw``
+    always overrides clustering, CSLS, centering, and whitening with cosine scores.
+    """
 
     if mode not in {"multiclass", "single_query"}:
         raise ValueError("mode must be 'multiclass' or 'single_query'")
@@ -712,6 +853,7 @@ def score_embeddings(
     queries = _validate_normalized_rows(
         queries, scene.features.shape[1], "queries"
     )
+    options = _scoring_options(mode, raw, cluster, csls)
     if not scene.valid_count:
         return (
             torch.full(
@@ -724,18 +866,12 @@ def score_embeddings(
                 },
                 "scoring": {
                     "status": "no_valid_features",
-                    "csls_k_effective": 0,
+                    **options,
+                    "csls_k_effective": 0 if options["csls"] else None,
                     "score_columns": len(queries),
                 },
             },
         )
-    reference_rows = (
-        load_reference()
-        if reference is None
-        else _validate_normalized_rows(
-            reference, scene.features.shape[1], "reference"
-        )
-    )
     device = torch.device(device)
     if device.type == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA was requested but is unavailable")
@@ -748,9 +884,16 @@ def score_embeddings(
         )
         return raw_scores, {
             "prototype_transform": {"operator": "raw cosine", "fit": "none"},
-            "scoring": scoring,
+            "scoring": {**scoring, **options},
         }
 
+    reference_rows = (
+        load_reference()
+        if reference is None
+        else _validate_normalized_rows(
+            reference, scene.features.shape[1], "reference"
+        )
+    )
     transformed_queries, transformed_reference, independent, prototype_metadata = _prepare_prototypes(
         queries, reference_rows, scene.direction, lambda_=lambda_, alpha=alpha,
         ridge=ridge, center=center, whiten=whiten, fit=fit, mode=mode, device=device,
@@ -759,12 +902,32 @@ def score_embeddings(
         "direction": scene.direction,
         "lambda_": lambda_,
         "center": center,
-        "csls": csls,
+        "csls": options["csls"],
         "csls_k": csls_k,
         "device": device,
         "chunk_size": chunk_size,
     }
-    if mode == "multiclass":
+    if options["cluster"]:
+        eligible_features = (
+            scene.features if bool(eligible.all()) else scene.features[eligible]
+        )
+        visual = _visual_rows(
+            eligible_features, scene.direction, lambda_, center, device
+        )
+        assignment, cluster_diagnostics = soft_cluster(visual, transformed_queries)
+        scores = torch.full(
+            (len(scene.features), len(queries)), -torch.inf, dtype=torch.float32
+        )
+        scores[eligible] = assignment.cpu()
+        scoring = {
+            "csls_k_effective": None,
+            "offset_min": None,
+            "offset_max": None,
+            "score_columns": len(queries),
+            "soft_cluster": cluster_diagnostics,
+            "cluster_population": "eligible rows only",
+        }
+    elif mode == "multiclass":
         scores, scoring = _score_matrix(
             scene, eligible, transformed_queries, **common
         )
@@ -778,7 +941,10 @@ def score_embeddings(
         scores, scoring = _score_shared_margin(
             scene, eligible, transformed_queries, transformed_reference, **common
         )
-    return scores, {"prototype_transform": prototype_metadata, "scoring": scoring}
+    return scores, {
+        "prototype_transform": prototype_metadata,
+        "scoring": {**scoring, **options},
+    }
 
 
 def _tensor_sha256(value: Tensor) -> str:
@@ -814,7 +980,8 @@ def score_queries(
     raw: bool = False,
     center: bool = True,
     whiten: bool = True,
-    csls: bool = True,
+    cluster: bool = True,
+    csls: bool | None = None,
     fit: str = "reference",
     opacity_threshold: float = 0.1,
     device: str | torch.device = "cuda",
@@ -826,10 +993,11 @@ def score_queries(
     operator to every query and returns target-minus-maximum-reference margins.
     With ``fit='query_reference'``, each query is instead fitted independently
     with the same ordered reference rows; requested queries never enter one
-    another's fit. Multiclass joint fitting uses all requested candidates and
-    the reference bank in one fit, then drops reference rows before score
-    columns and CSLS are computed. ``fit='query'`` is the bank-removed
-    multiclass control.
+    another's fit. Multiclass defaults to graph-free soft clustering of eligible
+    calibrated features against calibrated requested text. ``cluster=False``
+    selects direct scoring instead, with CSLS enabled unless explicitly disabled.
+    Multiclass joint fitting drops reference rows before clustering/direct scoring.
+    ``fit='query'`` is the bank-removed multiclass control.
     """
 
     features = _as_cpu_float32(features, "features")
@@ -864,29 +1032,12 @@ def score_queries(
     )
     scene = compute_scene_statistics(features, chunk_size=chunk_size)
     eligible = eligibility_mask(gaussians, features, opacity_threshold=opacity_threshold)
-    if scene.valid_count:
-        scores, diagnostics = score_embeddings(
-            scene, eligible, encoded_queries, reference=reference_rows, lambda_=lambda_,
-            alpha=alpha, ridge=ridge, csls_k=csls_k, mode=mode, raw=raw,
-            center=center, whiten=whiten, csls=csls, fit=fit, device=device,
-            chunk_size=chunk_size,
-        )
-    else:
-        scores = torch.full(
-            (len(features), len(encoded_queries)), -torch.inf, dtype=torch.float32
-        )
-        eligible = torch.zeros(len(features), dtype=torch.bool)
-        diagnostics = {
-            "prototype_transform": {
-                "operator": "not_run",
-                "reason": "no_finite_nonzero_feature_rows",
-            },
-            "scoring": {
-                "status": "no_valid_features",
-                "csls_k_effective": 0,
-                "score_columns": len(encoded_queries),
-            },
-        }
+    scores, diagnostics = score_embeddings(
+        scene, eligible, encoded_queries, reference=reference_rows, lambda_=lambda_,
+        alpha=alpha, ridge=ridge, csls_k=csls_k, mode=mode, raw=raw,
+        center=center, whiten=whiten, cluster=cluster, csls=csls, fit=fit, device=device,
+        chunk_size=chunk_size,
+    )
     metadata = {
         "schema": 1,
         "mode": mode,
@@ -898,16 +1049,21 @@ def score_queries(
             "lambda": float(lambda_), "alpha": float(alpha), "ridge": float(ridge),
             "csls_k": int(csls_k), "opacity_threshold": float(opacity_threshold),
             "raw": bool(raw), "center": bool(center and not raw),
-            "whiten": bool(whiten and not raw), "csls": bool(csls and not raw),
+            "whiten": bool(whiten and not raw),
+            "cluster": diagnostics["scoring"]["cluster"],
+            "csls": diagnostics["scoring"]["csls"],
+            "cluster_requested": bool(cluster), "csls_requested": csls,
             "fit": "none" if raw else fit, "chunk_size": int(chunk_size),
         },
+        "method": diagnostics["scoring"]["method"],
         "population": {
             "primitives": len(features),
             "feature_valid": scene.valid_count,
             "eligible": int(eligible.sum().item()),
             "status": "ready" if scene.valid_count else "no_valid_features",
-            "calibration_executed": bool(scene.valid_count),
+            "calibration_executed": bool(scene.valid_count and not raw),
             "statistics": "all finite exact-nonzero feature rows, including low-opacity rows",
+            "clustering": "eligible rows only" if diagnostics["scoring"]["cluster"] else "not used",
             "output": "finite score only for finite-geometry, feature-valid, opacity-eligible rows; -inf otherwise",
         },
         "normalization": {
@@ -984,7 +1140,10 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--raw", action="store_true", help="raw cosine; overrides all calibration components")
     parser.add_argument("--center", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--whiten", action=argparse.BooleanOptionalAction, default=True)
-    parser.add_argument("--csls", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--cluster", action=argparse.BooleanOptionalAction, default=True,
+                        help="graph-free paper clustering for multiclass; ignored for N1/raw")
+    parser.add_argument("--csls", action=argparse.BooleanOptionalAction, default=None,
+                        help="defaults on for N1/direct scores, off for clustering; incompatible with --cluster")
     return parser
 
 
@@ -1002,7 +1161,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     result = score_queries(
         gaussians, features, queries, reference=reference, lambda_=args.lambda_,
         alpha=args.alpha, ridge=args.ridge, csls_k=args.csls_k, mode=args.mode,
-        raw=args.raw, center=args.center, whiten=args.whiten, csls=args.csls,
+        raw=args.raw, center=args.center, whiten=args.whiten, cluster=args.cluster, csls=args.csls,
         fit=args.fit, opacity_threshold=args.opacity_threshold, device=args.device,
         chunk_size=args.chunk_size,
     )
@@ -1019,6 +1178,9 @@ def main(argv: Sequence[str] | None = None) -> None:
         "eligible": int(result["eligible"].sum().item()),
         "mode": args.mode,
         "fit": "none" if args.raw else args.fit,
+        "method": result["metadata"]["method"],
+        "cluster": result["metadata"]["parameters"]["cluster"],
+        "csls": result["metadata"]["parameters"]["csls"],
     }, sort_keys=True))
 
 

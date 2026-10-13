@@ -1,0 +1,2531 @@
+{
+  "schema": 1,
+  "source": {
+    "table": "tab:calibration-all-datasets",
+    "sha256": "34748fbe288f57d952d578c2c4e7a27af517122790f9a91df0d5752bbd11574c",
+    "units": "percent",
+    "precision": 2
+  },
+  "rows": [
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 49.09,
+      "precision": 67.67,
+      "recall": 61.46
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 65.67,
+      "precision": 77.11,
+      "recall": 71.23
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 16.57,
+      "precision": 9.45,
+      "recall": 9.77
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 70.79,
+      "precision": 75.94,
+      "recall": 88.95
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 89.8,
+      "precision": 94.09,
+      "recall": 95.58
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 19.01,
+      "precision": 18.15,
+      "recall": 6.63
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 58.55,
+      "precision": 74.58,
+      "recall": 68.23
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 60.25,
+      "precision": 68.42,
+      "recall": 66.97
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 1.7,
+      "precision": -6.16,
+      "recall": -1.26
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 70.9,
+      "precision": 74.41,
+      "recall": 88.0
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 86.11,
+      "precision": 90.49,
+      "recall": 93.11
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 15.2,
+      "precision": 16.08,
+      "recall": 5.1
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 38.05,
+      "precision": 59.77,
+      "recall": 49.76
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 45.44,
+      "precision": 57.75,
+      "recall": 58.34
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 7.39,
+      "precision": -2.02,
+      "recall": 8.57
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 4.15,
+      "precision": 10.5,
+      "recall": 14.07
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 5.85,
+      "precision": 16.8,
+      "recall": 14.59
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 1.7,
+      "precision": 6.3,
+      "recall": 0.52
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 57.13,
+      "precision": 71.66,
+      "recall": 66.0
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 61.05,
+      "precision": 69.71,
+      "recall": 67.21
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 3.92,
+      "precision": -1.95,
+      "recall": 1.21
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 66.19,
+      "precision": 73.14,
+      "recall": 87.94
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 84.21,
+      "precision": 89.04,
+      "recall": 93.08
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 18.01,
+      "precision": 15.91,
+      "recall": 5.14
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 59.83,
+      "precision": 74.89,
+      "recall": 68.59
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 59.68,
+      "precision": 71.72,
+      "recall": 66.46
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": -0.15,
+      "precision": -3.16,
+      "recall": -2.12
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 64.16,
+      "precision": 71.88,
+      "recall": 87.23
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 79.02,
+      "precision": 85.49,
+      "recall": 91.53
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 14.86,
+      "precision": 13.61,
+      "recall": 4.3
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 33.62,
+      "precision": 41.57,
+      "recall": 45.79
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 46.18,
+      "precision": 51.09,
+      "recall": 55.0
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 12.56,
+      "precision": 9.51,
+      "recall": 9.21
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 23.73,
+      "precision": 36.45,
+      "recall": 56.93
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 28.81,
+      "precision": 45.91,
+      "recall": 59.22
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 5.08,
+      "precision": 9.46,
+      "recall": 2.29
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 1.49,
+      "precision": 15.03,
+      "recall": 8.88
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 5.15,
+      "precision": 21.44,
+      "recall": 10.24
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 3.66,
+      "precision": 6.41,
+      "recall": 1.37
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 7.43,
+      "precision": 26.87,
+      "recall": 20.38
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 15.19,
+      "precision": 41.79,
+      "recall": 32.55
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 7.76,
+      "precision": 14.93,
+      "recall": 12.17
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 45.71,
+      "precision": 56.91,
+      "recall": 79.1
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 53.86,
+      "precision": 67.52,
+      "recall": 76.0
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 8.15,
+      "precision": 10.6,
+      "recall": -3.11
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 69.21,
+      "precision": 78.0,
+      "recall": 82.18
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 83.59,
+      "precision": 90.78,
+      "recall": 92.01
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 14.39,
+      "precision": 12.78,
+      "recall": 9.83
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 48.82,
+      "precision": 63.21,
+      "recall": 68.16
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 53.03,
+      "precision": 66.89,
+      "recall": 67.82
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 4.21,
+      "precision": 3.69,
+      "recall": -0.34
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 68.62,
+      "precision": 77.83,
+      "recall": 80.08
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 82.47,
+      "precision": 88.63,
+      "recall": 92.31
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 13.86,
+      "precision": 10.79,
+      "recall": 12.23
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 31.98,
+      "precision": 42.49,
+      "recall": 74.02
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 35.15,
+      "precision": 53.14,
+      "recall": 62.19
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 3.16,
+      "precision": 10.65,
+      "recall": -11.83
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 13.94,
+      "precision": 16.4,
+      "recall": 81.98
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 13.96,
+      "precision": 16.42,
+      "recall": 83.03
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 0.03,
+      "precision": 0.03,
+      "recall": 1.05
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 46.09,
+      "precision": 64.16,
+      "recall": 68.07
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 53.67,
+      "precision": 66.38,
+      "recall": 69.87
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 7.58,
+      "precision": 2.22,
+      "recall": 1.8
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 61.1,
+      "precision": 77.61,
+      "recall": 73.99
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 75.28,
+      "precision": 83.39,
+      "recall": 78.15
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 14.17,
+      "precision": 5.79,
+      "recall": 4.16
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 21.3,
+      "precision": 42.98,
+      "recall": 38.65
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 54.15,
+      "precision": 71.03,
+      "recall": 65.88
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 32.85,
+      "precision": 28.05,
+      "recall": 27.22
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 31.19,
+      "precision": 54.41,
+      "recall": 56.48
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 75.01,
+      "precision": 84.59,
+      "recall": 78.24
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 43.82,
+      "precision": 30.19,
+      "recall": 21.76
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 30.97,
+      "precision": 37.35,
+      "recall": 56.5
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 31.06,
+      "precision": 41.75,
+      "recall": 41.13
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 0.09,
+      "precision": 4.4,
+      "recall": -15.37
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 30.72,
+      "precision": 55.69,
+      "recall": 36.38
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 34.24,
+      "precision": 59.15,
+      "recall": 36.41
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 3.52,
+      "precision": 3.46,
+      "recall": 0.03
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 4.76,
+      "precision": 8.77,
+      "recall": 77.51
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 5.19,
+      "precision": 8.89,
+      "recall": 57.28
+    },
+    {
+      "dataset": "lerf_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 0.43,
+      "precision": 0.12,
+      "recall": -20.23
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 14.96,
+      "precision": 17.32,
+      "recall": 86.29
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 19.57,
+      "precision": 29.49,
+      "recall": 69.34
+    },
+    {
+      "dataset": "3d_ovs",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 4.61,
+      "precision": 12.17,
+      "recall": -16.95
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 38.25,
+      "precision": 64.23,
+      "recall": 55.7
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 48.91,
+      "precision": 70.97,
+      "recall": 65.14
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 10.65,
+      "precision": 6.74,
+      "recall": 9.45
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 26.87,
+      "precision": 56.38,
+      "recall": 41.45
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 39.37,
+      "precision": 60.67,
+      "recall": 51.18
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 12.5,
+      "precision": 4.3,
+      "recall": 9.72
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 43.89,
+      "precision": 63.41,
+      "recall": 63.7
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 50.18,
+      "precision": 71.02,
+      "recall": 66.14
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 6.29,
+      "precision": 7.61,
+      "recall": 2.45
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 31.4,
+      "precision": 55.1,
+      "recall": 48.57
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 39.55,
+      "precision": 60.68,
+      "recall": 52.64
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 8.14,
+      "precision": 5.58,
+      "recall": 4.07
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 40.7,
+      "precision": 64.25,
+      "recall": 59.01
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 49.48,
+      "precision": 71.97,
+      "recall": 65.1
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 8.78,
+      "precision": 7.71,
+      "recall": 6.09
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 29.32,
+      "precision": 56.48,
+      "recall": 44.78
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 39.83,
+      "precision": 60.39,
+      "recall": 52.81
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 10.51,
+      "precision": 3.91,
+      "recall": 8.03
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 34.74,
+      "precision": 57.27,
+      "recall": 53.68
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 45.43,
+      "precision": 67.34,
+      "recall": 61.5
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 10.69,
+      "precision": 10.07,
+      "recall": 7.82
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 23.87,
+      "precision": 50.09,
+      "recall": 39.06
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 32.11,
+      "precision": 55.54,
+      "recall": 45.25
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 8.24,
+      "precision": 5.45,
+      "recall": 6.19
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 38.94,
+      "precision": 59.77,
+      "recall": 58.16
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 43.73,
+      "precision": 66.78,
+      "recall": 59.42
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 4.79,
+      "precision": 7.01,
+      "recall": 1.26
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 27.81,
+      "precision": 53.13,
+      "recall": 43.05
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 36.16,
+      "precision": 57.98,
+      "recall": 48.98
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 8.35,
+      "precision": 4.85,
+      "recall": 5.94
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 33.87,
+      "precision": 54.21,
+      "recall": 52.33
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 41.79,
+      "precision": 66.08,
+      "recall": 57.53
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 7.91,
+      "precision": 11.87,
+      "recall": 5.19
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 24.34,
+      "precision": 46.8,
+      "recall": 39.68
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 32.09,
+      "precision": 53.16,
+      "recall": 43.76
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 7.76,
+      "precision": 6.36,
+      "recall": 4.08
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 5.97,
+      "precision": 30.72,
+      "recall": 20.82
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 7.17,
+      "precision": 29.33,
+      "recall": 18.44
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 1.2,
+      "precision": -1.39,
+      "recall": -2.38
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 3.04,
+      "precision": 19.96,
+      "recall": 11.34
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 4.0,
+      "precision": 18.55,
+      "recall": 8.06
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 0.96,
+      "precision": -1.41,
+      "recall": -3.28
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 30.47,
+      "precision": 43.91,
+      "recall": 62.12
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 39.91,
+      "precision": 55.4,
+      "recall": 65.82
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 9.44,
+      "precision": 11.5,
+      "recall": 3.7
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 26.66,
+      "precision": 39.77,
+      "recall": 56.52
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 34.52,
+      "precision": 47.87,
+      "recall": 63.77
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 7.85,
+      "precision": 8.1,
+      "recall": 7.25
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 34.56,
+      "precision": 45.81,
+      "recall": 66.57
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 42.3,
+      "precision": 57.77,
+      "recall": 67.2
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 7.74,
+      "precision": 11.95,
+      "recall": 0.64
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 30.56,
+      "precision": 40.61,
+      "recall": 64.74
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 36.64,
+      "precision": 49.55,
+      "recall": 66.94
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 6.08,
+      "precision": 8.94,
+      "recall": 2.2
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 31.7,
+      "precision": 44.38,
+      "recall": 62.95
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 41.1,
+      "precision": 56.77,
+      "recall": 65.95
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 9.39,
+      "precision": 12.39,
+      "recall": 3.0
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 28.46,
+      "precision": 40.39,
+      "recall": 59.53
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 35.76,
+      "precision": 49.11,
+      "recall": 64.45
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 7.3,
+      "precision": 8.73,
+      "recall": 4.91
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 27.66,
+      "precision": 43.32,
+      "recall": 50.44
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 35.41,
+      "precision": 52.78,
+      "recall": 57.58
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 7.75,
+      "precision": 9.46,
+      "recall": 7.14
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 22.96,
+      "precision": 37.33,
+      "recall": 44.56
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 31.01,
+      "precision": 46.3,
+      "recall": 54.45
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 8.05,
+      "precision": 8.97,
+      "recall": 9.88
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 30.26,
+      "precision": 45.74,
+      "recall": 53.03
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 37.59,
+      "precision": 55.01,
+      "recall": 60.58
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 7.33,
+      "precision": 9.27,
+      "recall": 7.55
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 26.6,
+      "precision": 40.6,
+      "recall": 48.62
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 32.85,
+      "precision": 47.79,
+      "recall": 57.65
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 6.26,
+      "precision": 7.19,
+      "recall": 9.03
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 26.84,
+      "precision": 40.92,
+      "recall": 51.75
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 35.53,
+      "precision": 57.9,
+      "recall": 52.98
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 8.69,
+      "precision": 16.98,
+      "recall": 1.23
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 22.95,
+      "precision": 36.56,
+      "recall": 45.94
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 30.81,
+      "precision": 49.63,
+      "recall": 53.48
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 7.86,
+      "precision": 13.07,
+      "recall": 7.54
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 15.02,
+      "precision": 15.07,
+      "recall": 97.86
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 15.31,
+      "precision": 16.46,
+      "recall": 86.32
+    },
+    {
+      "dataset": "scannet",
+      "subset": "10",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 0.29,
+      "precision": 1.39,
+      "recall": -11.54
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 11.37,
+      "precision": 11.41,
+      "recall": 97.91
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 11.62,
+      "precision": 12.71,
+      "recall": 85.59
+    },
+    {
+      "dataset": "scannet",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 0.25,
+      "precision": 1.3,
+      "recall": -12.32
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 27.7,
+      "precision": 45.81,
+      "recall": 43.77
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 33.31,
+      "precision": 52.83,
+      "recall": 44.79
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 5.61,
+      "precision": 7.02,
+      "recall": 1.02
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 19.92,
+      "precision": 39.7,
+      "recall": 28.23
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 23.74,
+      "precision": 41.99,
+      "recall": 30.83
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "sfs",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 3.81,
+      "precision": 2.28,
+      "recall": 2.6
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 28.89,
+      "precision": 46.2,
+      "recall": 44.76
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 34.03,
+      "precision": 52.76,
+      "recall": 45.19
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 5.14,
+      "precision": 6.56,
+      "recall": 0.43
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 20.6,
+      "precision": 39.19,
+      "recall": 29.7
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 24.76,
+      "precision": 42.05,
+      "recall": 32.22
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "normlift",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 4.16,
+      "precision": 2.86,
+      "recall": 2.52
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 28.39,
+      "precision": 47.25,
+      "recall": 44.42
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 34.1,
+      "precision": 53.87,
+      "recall": 45.75
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 5.71,
+      "precision": 6.62,
+      "recall": 1.33
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 20.31,
+      "precision": 40.81,
+      "recall": 28.54
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 23.96,
+      "precision": 41.24,
+      "recall": 30.62
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 3.66,
+      "precision": 0.43,
+      "recall": 2.07
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 27.62,
+      "precision": 44.33,
+      "recall": 43.85
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 33.3,
+      "precision": 51.57,
+      "recall": 45.32
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 5.68,
+      "precision": 7.24,
+      "recall": 1.46
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 20.18,
+      "precision": 39.07,
+      "recall": 29.34
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 23.16,
+      "precision": 40.35,
+      "recall": 30.09
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "occam",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 2.98,
+      "precision": 1.28,
+      "recall": 0.75
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 26.93,
+      "precision": 44.25,
+      "recall": 43.01
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 31.94,
+      "precision": 49.8,
+      "recall": 43.93
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 5.01,
+      "precision": 5.55,
+      "recall": 0.92
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 19.28,
+      "precision": 38.69,
+      "recall": 28.27
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 22.9,
+      "precision": 40.75,
+      "recall": 30.18
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "vala",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 3.61,
+      "precision": 2.06,
+      "recall": 1.92
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 24.53,
+      "precision": 37.53,
+      "recall": 40.29
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 28.36,
+      "precision": 44.29,
+      "recall": 40.85
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 3.83,
+      "precision": 6.76,
+      "recall": 0.56
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 15.25,
+      "precision": 24.18,
+      "recall": 23.25
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 17.72,
+      "precision": 29.95,
+      "recall": 24.49
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 2.47,
+      "precision": 5.76,
+      "recall": 1.23
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 9.53,
+      "precision": 20.6,
+      "recall": 19.31
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 11.59,
+      "precision": 26.8,
+      "recall": 18.84
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 2.06,
+      "precision": 6.21,
+      "recall": -0.47
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "raw",
+      "miou": 4.5,
+      "precision": 11.77,
+      "recall": 8.15
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "calibrated",
+      "miou": 6.08,
+      "precision": 15.8,
+      "recall": 9.29
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "multiclass",
+      "variant": "delta",
+      "miou": 1.58,
+      "precision": 4.04,
+      "recall": 1.13
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 26.64,
+      "precision": 37.94,
+      "recall": 54.36
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 29.92,
+      "precision": 46.51,
+      "recall": 48.55
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 3.28,
+      "precision": 8.57,
+      "recall": -5.81
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 22.55,
+      "precision": 34.64,
+      "recall": 42.56
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 24.39,
+      "precision": 36.14,
+      "recall": 43.62
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "sfs",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 1.84,
+      "precision": 1.51,
+      "recall": 1.06
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 28.2,
+      "precision": 39.76,
+      "recall": 55.15
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 31.37,
+      "precision": 45.65,
+      "recall": 51.62
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 3.17,
+      "precision": 5.89,
+      "recall": -3.53
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 23.89,
+      "precision": 35.33,
+      "recall": 44.01
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 25.54,
+      "precision": 35.39,
+      "recall": 46.87
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "normlift",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 1.65,
+      "precision": 0.07,
+      "recall": 2.87
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 27.13,
+      "precision": 37.29,
+      "recall": 56.99
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 30.9,
+      "precision": 46.84,
+      "recall": 50.11
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 3.77,
+      "precision": 9.55,
+      "recall": -6.89
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 23.11,
+      "precision": 34.85,
+      "recall": 44.67
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 25.27,
+      "precision": 36.83,
+      "recall": 45.3
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "ludvig",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 2.16,
+      "precision": 1.98,
+      "recall": 0.63
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 26.81,
+      "precision": 38.99,
+      "recall": 52.98
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 30.06,
+      "precision": 46.34,
+      "recall": 49.02
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 3.25,
+      "precision": 7.35,
+      "recall": -3.96
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 22.97,
+      "precision": 35.08,
+      "recall": 42.66
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 24.24,
+      "precision": 35.21,
+      "recall": 44.25
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "occam",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 1.27,
+      "precision": 0.13,
+      "recall": 1.59
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 25.45,
+      "precision": 39.02,
+      "recall": 48.53
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 27.42,
+      "precision": 45.85,
+      "recall": 44.32
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 1.97,
+      "precision": 6.83,
+      "recall": -4.22
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 21.99,
+      "precision": 35.53,
+      "recall": 39.08
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 22.67,
+      "precision": 35.61,
+      "recall": 40.08
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "vala",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 0.68,
+      "precision": 0.07,
+      "recall": 1.0
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 24.13,
+      "precision": 34.16,
+      "recall": 50.56
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 27.99,
+      "precision": 41.88,
+      "recall": 50.25
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 3.86,
+      "precision": 7.72,
+      "recall": -0.31
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 18.91,
+      "precision": 26.33,
+      "recall": 36.94
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 22.08,
+      "precision": 30.59,
+      "recall": 43.01
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "opengaussian",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 3.17,
+      "precision": 4.26,
+      "recall": 6.07
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 9.27,
+      "precision": 16.59,
+      "recall": 22.81
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 11.96,
+      "precision": 18.79,
+      "recall": 31.57
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "20",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 2.69,
+      "precision": 2.2,
+      "recall": 8.76
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "raw",
+      "miou": 5.92,
+      "precision": 11.77,
+      "recall": 15.65
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "calibrated",
+      "miou": 8.05,
+      "precision": 12.83,
+      "recall": 24.06
+    },
+    {
+      "dataset": "scannetpp",
+      "subset": "full",
+      "method": "langsplat",
+      "task": "single_query",
+      "variant": "delta",
+      "miou": 2.13,
+      "precision": 1.07,
+      "recall": 8.41
+    }
+  ]
+}

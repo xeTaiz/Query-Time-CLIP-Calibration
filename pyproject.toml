@@ -1,0 +1,51 @@
+[project]
+name = "query-time-clip-calibration"
+version = "0.1.0"
+description = "Query-time CLIP calibration for point and image evaluation"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "numpy==2.2.6",
+    "scipy==1.15.3",
+    "open-clip-torch==3.1.0",
+    "pillow==11.3.0",
+    "gsplat==1.5.3",
+]
+
+[project.optional-dependencies]
+export = [
+    "plyfile>=1.1,<2",
+    "pycolmap>=3.11,<4",
+    "opencv-python-headless>=4.11,<5",
+]
+
+[dependency-groups]
+point-runtime = ["torch==2.8.0", "torchvision==0.23.0"]
+image-runtime = ["torch==2.13.0", "torchvision==0.28.0"]
+
+[tool.uv]
+package = false
+environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+default-groups = ["point-runtime"]
+conflicts = [[{ group = "point-runtime" }, { group = "image-runtime" }]]
+
+# The paper's point and image tables use distinct Torch/CUDA runtimes.
+# gsplat additionally needs the matching external CUDA compiler toolkit.
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu126", group = "point-runtime" },
+    { index = "pytorch-cu130", group = "image-runtime" },
+]
+torchvision = [
+    { index = "pytorch-cu126", group = "point-runtime" },
+    { index = "pytorch-cu130", group = "image-runtime" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true

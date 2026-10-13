@@ -2,4 +2,11 @@ data
 __pycache__/
 *.py[cod]
 .venv/
+.venv-image/
 scores.pt
+results/
+.cache/
+.pytest_cache/
+build/
+dist/
+*.egg-info/

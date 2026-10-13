@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-import argparse
 import hashlib
-import json
 import math
 import os
 import tempfile
@@ -17,7 +15,7 @@ import numpy as np
 from scipy.spatial import cKDTree
 import torch
 
-from calibration import eligibility_mask, load_features, load_gaussians
+from calibration import eligibility_mask
 
 _ASSIGNMENT_ALGORITHM = "exact-certified-mahalanobis-float64-wxyz-scalefloor1e-8-v2"
 _INTEGER_DTYPES = {
@@ -356,7 +354,8 @@ def _hash_tensor(digest: Any, name: str, value: Any) -> None:
     digest.update(name.encode("utf-8"))
     digest.update(str(tuple(tensor.shape)).encode("ascii"))
     digest.update(str(tensor.dtype).encode("ascii"))
-    digest.update(tensor.numpy().tobytes(order="C"))
+    if tensor.numel():
+        digest.update(memoryview(tensor.numpy()).cast("B"))
 
 
 def assignment_identity(points: Any, gaussians: Mapping[str, Any], eligible: Any) -> str:
@@ -800,127 +799,3 @@ def _selected_vocabulary(
     return selected, [names[positions[int(class_id)]] for class_id in selected]
 
 
-def _cli_parser(spec: DatasetVocabularySpec) -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description=f"Evaluate exact P3 point metrics on {spec.dataset}."
-    )
-    parser.add_argument("--gaussians", required=True, help="gaussians.pt path")
-    parser.add_argument("--features", required=True, help="features.pt path")
-    parser.add_argument("--scores", required=True, help="calibration score bundle .pt")
-    parser.add_argument("--gt", required=True, help="gt.pt path")
-    parser.add_argument("--vocabulary", required=True, help="dataset vocabulary.pt path")
-    parser.add_argument(
-        "--mode", choices=("multiclass", "single_query"), default="multiclass"
-    )
-    parser.add_argument(
-        "--threshold", type=float, default=None, help="required for single_query"
-    )
-    parser.add_argument(
-        "--subset", choices=("full", *spec.subsets.keys()), default="full"
-    )
-    parser.add_argument("--opacity-threshold", type=float, default=0.1)
-    parser.add_argument(
-        "--device",
-        default="cpu",
-        help="assignment device; CPU uses certified exact search, CUDA uses blocked enumeration",
-    )
-    parser.add_argument("--point-chunk", type=int, default=2_048)
-    parser.add_argument("--primitive-chunk", type=int, default=65_536)
-    parser.add_argument(
-        "--assignment-cache",
-        default=None,
-        help="optional identity-checked .pt cache",
-    )
-    parser.add_argument("--output", required=True, help="output evaluation .pt")
-    return parser
-
-
-def run_dataset_cli(spec: DatasetVocabularySpec) -> None:
-    """Run the shared evaluator behind a dataset-specific thin CLI."""
-
-    args = _cli_parser(spec).parse_args()
-    gaussians = load_gaussians(args.gaussians)
-    features = load_features(args.features)
-    score_bundle = _safe_mapping(args.scores, "scores")
-    gt = _safe_mapping(args.gt, "ground truth")
-    if set(gt) != {"points", "labels"}:
-        raise ValueError("gt.pt must contain exactly 'points' and 'labels'")
-    vocabulary = _safe_mapping(args.vocabulary, "vocabulary")
-    class_ids, names, _, subsets = _validate_vocabulary(vocabulary, spec)
-    selected_ids, selected_names = _selected_vocabulary(
-        class_ids, names, subsets, args.subset
-    )
-
-    _, eligible, _ = _prepare_scores(
-        gaussians,
-        features,
-        score_bundle,
-        selected_ids,
-        float(args.opacity_threshold),
-    )
-    cache_metadata: dict[str, Any] | None = None
-    if args.assignment_cache is None:
-        assignments = assign_mahalanobis(
-            gt["points"],
-            gaussians,
-            eligible,
-            device=args.device,
-            point_chunk=args.point_chunk,
-            primitive_chunk=args.primitive_chunk,
-        )
-    else:
-        assignments, cache_metadata = load_or_create_assignment_cache(
-            args.assignment_cache,
-            gt["points"],
-            gaussians,
-            eligible,
-            device=args.device,
-            point_chunk=args.point_chunk,
-            primitive_chunk=args.primitive_chunk,
-        )
-
-    result = evaluate_scores(
-        gaussians,
-        features,
-        score_bundle,
-        gt["points"],
-        gt["labels"],
-        selected_ids,
-        mode=args.mode,
-        threshold=args.threshold,
-        opacity_threshold=args.opacity_threshold,
-        assignments=assignments,
-        device=args.device,
-    )
-    names_by_id = dict(zip(selected_ids.tolist(), selected_names))
-    for row in result["per_class"]:
-        row["class_name"] = names_by_id[row["class_id"]]
-    result["provenance"]["dataset"] = spec.dataset
-    result["provenance"]["vocabulary"] = {
-        "path": str(Path(args.vocabulary).resolve()),
-        "subset": args.subset,
-        "class_ids": selected_ids.tolist(),
-        "class_names": selected_names,
-    }
-    if cache_metadata is not None:
-        result["provenance"]["assignment"]["cache"] = cache_metadata
-    _atomic_torch_save(result, Path(args.output))
-    print(
-        json.dumps(
-            {
-                "dataset": spec.dataset,
-                "mode": args.mode,
-                "subset": args.subset,
-                "miou": result["miou"],
-                "precision": result["precision"],
-                "recall": result["recall"],
-                "classes": len(result["per_class"]),
-                "eligible_gaussians": result["provenance"]["population"][
-                    "eligible_gaussians"
-                ],
-                "output": str(Path(args.output).resolve()),
-            },
-            indent=2,
-            allow_nan=False,
-        )
-    )

@@ -1,6 +1,7 @@
 """Evaluate the fixed ScanNet++ top100 vocabulary with exact P3 correspondence."""
 
-from evaluation import DatasetVocabularySpec, run_dataset_cli
+from .evaluation import DatasetVocabularySpec
+from .point import run_dataset_cli
 
 
 SPEC = DatasetVocabularySpec(
