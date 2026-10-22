@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = "==3.11.*"
 resolution-markers = [
     "platform_machine == 'x86_64' and sys_platform == 'linux'",
@@ -143,7 +143,7 @@ dependencies = [
     { name = "rich" },
     { name = "torch", version = "2.8.0+cu126", source = { registry = "https://download.pytorch.org/whl/cu126" }, marker = "extra == 'group-27-query-time-clip-calibration-point-runtime'" },
     { name = "torch", version = "2.13.0+cu130", source = { registry = "https://download.pytorch.org/whl/cu130" }, marker = "extra == 'group-27-query-time-clip-calibration-image-runtime'" },
-    { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/6d/94/a0963873708223385ac926112dc3e40ab08297784ac53d95309b4cb5a801/gsplat-1.5.3.tar.gz", hash = "sha256:343f080c470e891ba3c697c03bdf0952cb982d1d535fdc24adb23c2cb4fba906", size = 4743603, upload-time = "2025-07-04T16:50:42.899Z" }
 wheels = [
@@ -422,7 +422,7 @@ resolution-markers = [
     "platform_machine == 'x86_64' and sys_platform == 'linux'",
 ]
 dependencies = [
-    { name = "nvidia-cublas", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "nvidia-cublas", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5c/ba/791cffd048fe5b044e620df55267e3e95c0e6e07d50b41e377c03dfc910f/nvidia_cudnn_cu13-9.24.0.43-py3-none-manylinux_2_27_x86_64.whl", hash = "sha256:71f181cd810e90f9b6023b01186fe82d13d65f0ec098581ee201d39fad769e4b", size = 553099438, upload-time = "2026-07-02T16:27:42.58Z" },
@@ -633,10 +633,10 @@ dependencies = [
     { name = "timm" },
     { name = "torch", version = "2.8.0+cu126", source = { registry = "https://download.pytorch.org/whl/cu126" }, marker = "extra == 'group-27-query-time-clip-calibration-point-runtime'" },
     { name = "torch", version = "2.13.0+cu130", source = { registry = "https://download.pytorch.org/whl/cu130" }, marker = "extra == 'group-27-query-time-clip-calibration-image-runtime'" },
-    { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
     { name = "torchvision", version = "0.23.0+cu126", source = { registry = "https://download.pytorch.org/whl/cu126" }, marker = "extra == 'group-27-query-time-clip-calibration-point-runtime'" },
     { name = "torchvision", version = "0.28.0+cu130", source = { registry = "https://download.pytorch.org/whl/cu130" }, marker = "extra == 'group-27-query-time-clip-calibration-image-runtime'" },
-    { name = "torchvision", version = "0.29.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "torchvision", version = "0.29.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
     { name = "tqdm" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/69/0e/e7136a8c9eca3716598678dae28daf3f34b5995daaf3431e13c531da89ba/open_clip_torch-3.1.0.tar.gz", hash = "sha256:08b94ee31cb7dc3aadd8334a72458d171353b1bd5b0e71b14e3072ade3f37805", size = 1502455, upload-time = "2025-08-06T14:48:40.547Z" }
@@ -668,15 +668,13 @@ wheels = [
 
 [[package]]
 name = "pillow"
-version = "11.3.0"
+version = "13.0.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/f3/0d/d0d6dea55cd152ce3d6767bb38a8fc10e33796ba4ba210cbab9354b6d238/pillow-11.3.0.tar.gz", hash = "sha256:3828ee7586cd0b2091b6209e5ad53e20d0649bbe87164a459d0676e035e8f523", size = 47113069, upload-time = "2025-07-01T09:16:30.666Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ce/a4/9cc30690a394a8305e8be4c9036aa16d0dfddadd09079860b582f562496d/pillow-13.0.0.tar.gz", hash = "sha256:cdcd1ba258178f7356d74170c9a81ba4eab6a5d55748bc402a5a2a6fe6be3510", size = 47058631, upload-time = "2026-10-16T22:18:09.718Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/13/92/dcdd147ab02daf405387f0218dcf792dc6dd5b14d2573d40b4caeef01059/pillow-11.3.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:91da1d88226663594e3f6b4b8c3c8d85bd504117d043740a8e0ec449087cc494", size = 7641168, upload-time = "2025-07-03T13:10:00.37Z" },
-    { url = "https://files.pythonhosted.org/packages/f2/2f/d7675ecae6c43e9f12aa8d58b6012683b20b6edfbdac7abcb4e6af7a3784/pillow-11.3.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:106064daa23a745510dabce1d84f29137a37224831d88eb4ce94bb187b1d7e5f", size = 6640273, upload-time = "2025-07-01T09:14:06.235Z" },
-    { url = "https://files.pythonhosted.org/packages/3a/04/ba8f2b11fc80d2dd462d7abec16351b45ec99cbbaea4387648a44190351a/pillow-11.3.0-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:932c754c2d51ad2b2271fd01c3d121daaa35e27efae2a616f77bf164bc0b3e94", size = 6715516, upload-time = "2025-07-01T09:14:10.233Z" },
-    { url = "https://files.pythonhosted.org/packages/de/5f/c22340acd61cef960130585bbe2120e2fd8434c214802f07e8c03596b17e/pillow-11.3.0-pp311-pypy311_pp73-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:465b9e8844e3c3519a983d58b80be3f668e2a7a5db97f2784e7079fbc9f9822c", size = 6583963, upload-time = "2025-07-03T13:11:26.283Z" },
-    { url = "https://files.pythonhosted.org/packages/cc/2d/e082982aacc927fc2cab48e1e731bdb1643a1406acace8bed0900a61464e/pillow-11.3.0-pp311-pypy311_pp73-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:504b6f59505f08ae014f724b6207ff6222662aab5cc9542577fb084ed0676ac7", size = 5581505, upload-time = "2025-07-01T09:16:25.593Z" },
+    { url = "https://files.pythonhosted.org/packages/36/46/f509b74787f40ce0627501089d630b2c741b63b244c1f40b640b3b01e181/pillow-13.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:a625df9a2a5597fa5e5266e01aefc82604bb85d291e3547981e863560d75da6c", size = 7140667, upload-time = "2026-10-16T22:15:31.368Z" },
+    { url = "https://files.pythonhosted.org/packages/4f/7b/f2f1109b230fd4e2d57ab2305de31adc37ea9b4ff8719436c623cb484415/pillow-13.0.0-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:f391dc92a015c478745192fe4f2e120c2af2aba18d9fe0616341cbf537599806", size = 7218241, upload-time = "2026-10-16T22:15:36.214Z" },
+    { url = "https://files.pythonhosted.org/packages/07/52/d3e38f0cad1dadea2a658b9a7d6ba8a04048f5ae14f011b806e5c3bd6bcb/pillow-13.0.0-pp311-pypy311_pp80-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:83b37abd87b590acd8f47ca8a61f70893322b11834d36e07c2298dacad4d14d2", size = 6043133, upload-time = "2026-10-16T22:17:55.625Z" },
 ]
 
 [[package]]
@@ -725,6 +723,7 @@ wheels = [
 name = "query-time-clip-calibration"
 version = "0.1.0"
 source = { virtual = "." }
+default-groups = ["point-runtime"]
 dependencies = [
     { name = "gsplat" },
     { name = "numpy" },
@@ -756,7 +755,7 @@ requires-dist = [
     { name = "numpy", specifier = "==2.2.6" },
     { name = "open-clip-torch", specifier = "==3.1.0" },
     { name = "opencv-python-headless", marker = "extra == 'export'", specifier = ">=4.11,<5" },
-    { name = "pillow", specifier = "==11.3.0" },
+    { name = "pillow", specifier = "==13.0.0" },
     { name = "plyfile", marker = "extra == 'export'", specifier = ">=1.1,<2" },
     { name = "pycolmap", marker = "extra == 'export'", specifier = ">=3.11,<4" },
     { name = "scipy", specifier = "==1.15.3" },
@@ -850,10 +849,10 @@ dependencies = [
     { name = "safetensors" },
     { name = "torch", version = "2.8.0+cu126", source = { registry = "https://download.pytorch.org/whl/cu126" }, marker = "extra == 'group-27-query-time-clip-calibration-point-runtime'" },
     { name = "torch", version = "2.13.0+cu130", source = { registry = "https://download.pytorch.org/whl/cu130" }, marker = "extra == 'group-27-query-time-clip-calibration-image-runtime'" },
-    { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
     { name = "torchvision", version = "0.23.0+cu126", source = { registry = "https://download.pytorch.org/whl/cu126" }, marker = "extra == 'group-27-query-time-clip-calibration-point-runtime'" },
     { name = "torchvision", version = "0.28.0+cu130", source = { registry = "https://download.pytorch.org/whl/cu130" }, marker = "extra == 'group-27-query-time-clip-calibration-image-runtime'" },
-    { name = "torchvision", version = "0.29.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "torchvision", version = "0.29.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/0e/ab/49041213990e48edcb6013463b18ef86d8d3c5d6ac5b408802c480443025/timm-1.0.30.tar.gz", hash = "sha256:1444a3af7e17fdba5440ac2bcf6e4b728da96dd62289ed9e1bcba31a545f5935", size = 2534738, upload-time = "2026-09-22T20:46:13.9Z" }
 wheels = [
@@ -929,20 +928,20 @@ resolution-markers = [
     "platform_machine == 'x86_64' and sys_platform == 'linux'",
 ]
 dependencies = [
-    { name = "cuda-bindings", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "cuda-toolkit", extra = ["cublas", "cudart", "cufft", "cufile", "cupti", "curand", "cusolver", "cusparse", "nvjitlink", "nvrtc", "nvtx"], marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "filelock", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "fsspec", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "jinja2", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "networkx", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "nvidia-cudnn-cu13", version = "9.24.0.43", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "nvidia-cusparselt-cu13", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "nvidia-nccl-cu13", version = "2.30.7", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "nvidia-nvshmem-cu13", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "setuptools", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "sympy", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "triton", version = "3.8.0", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "typing-extensions", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "cuda-bindings", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "cuda-toolkit", extra = ["cublas", "cudart", "cufft", "cufile", "cupti", "curand", "cusolver", "cusparse", "nvjitlink", "nvrtc", "nvtx"], marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "filelock", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "fsspec", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "jinja2", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "networkx", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "nvidia-cudnn-cu13", version = "9.24.0.43", source = { registry = "https://pypi.org/simple" }, marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "nvidia-cusparselt-cu13", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "nvidia-nccl-cu13", version = "2.30.7", source = { registry = "https://pypi.org/simple" }, marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "nvidia-nvshmem-cu13", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "setuptools", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "sympy", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "triton", version = "3.8.0", source = { registry = "https://pypi.org/simple" }, marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "typing-extensions", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/aa/4f/7af6fbada912b3023cc79b6ab30f89234b258a9a373880ea52ed914a2ae9/torch-2.14.1-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:305a61f61f35f128579f299c5bd33d475f6a01c6307336139632e30856c4854d", size = 554581699, upload-time = "2026-09-30T17:49:10.777Z" },
@@ -988,9 +987,9 @@ resolution-markers = [
     "platform_machine == 'x86_64' and sys_platform == 'linux'",
 ]
 dependencies = [
-    { name = "numpy", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "pillow", marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
-    { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime') or (extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "numpy", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "pillow", marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
+    { name = "torch", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra != 'group-27-query-time-clip-calibration-image-runtime' and extra != 'group-27-query-time-clip-calibration-point-runtime') or (extra == 'group-27-query-time-clip-calibration-image-runtime' and extra == 'group-27-query-time-clip-calibration-point-runtime')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/17/58/df93d4bb1981f0be093192eb30efc8ae3cc8cf617b056b75f83d8750d212/torchvision-0.29.1-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:2cb678029a5dd45afbbfa662fce49736827d52be33242b5a8a731e0db02ccdf5", size = 7430666, upload-time = "2026-09-30T17:57:14.126Z" },
